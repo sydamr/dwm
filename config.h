@@ -6,13 +6,13 @@ static const unsigned int gappx     = 5;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = {"JetBrains Mono Nerd Font:size=9"} ;
-static const char dmenufont[]       = "JetBrains Mono Nerd Font:size=10";
+static const char *fonts[]          = {"JetBrains Mono Nerd Font:size=9","JoyPixels:pixelsize=12:antialias=true:autohint=true"} ;
+static const char dmenufont[]       = "JetBrains Mono Nerd Font:size=9";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#9ff";
-static const char col_gray4[]       = "#FFF";
-static const char col_cyan[]        = "#6E93CC";
+static const char col_gray4[]       = "#000";
+static const char col_cyan[]        = "#6e93cc";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
