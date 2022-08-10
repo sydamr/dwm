@@ -6,20 +6,15 @@ static const unsigned int gappx     = 5;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = {"JetBrains Mono:pixelsize=11:antialias=true:autohint=true", "JoyPixels:pixelsize=12:antialias=true:autohint=true"} ;
-static const char dmenufont[]       = "JetBrains Mono :size=9";
+static const char *fonts[]          = {"JetBrainsMono Nerd Font:pixelsize=11:antialias=true:autohint=true", "JoyPixels:pixelsize=12:antialias=true:autohint=true"} ;
+static const char dmenufont[]       = "JetBrainsMono Nerd Font:size=9";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#FF81B1";
 static const char col_gray4[]       = "#fff";
 static const char col_gray5[]       = "#7aaef7";
 static const char col_cyan[]        = "#1f2030";
-static const char *colors[][3]      = {
-	/*               fg         bg         border   */
-	[SchemeNorm] = { col_gray5, col_cyan, col_gray1 },
-	[SchemeSel]  = { col_gray3, col_cyan,  col_gray5 },
-};
-
+#include "/home/syed/.cache/wal/colors-wal-dwm.h"
 /* tagging */
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 
@@ -29,8 +24,10 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
-	{ "Firefox",  NULL,       NULL,       1,       0,           -1 },
+	{ "discord",  NULL,       NULL,       100000000,       0,           -1 },
+//	{ "St",  NULL,       NULL,       1<<1,       0,           -1 },//
+	{ "Chromium-bin-browser-chromium",  NULL,       NULL,       1,       0,           -1 },
+	{ "LibreWolf",  NULL,       NULL,       1,       0,           -1 },
 };
 
 /* layout(s) */
@@ -58,12 +55,12 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray5, NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont};
 static const char *termcmd[]  = { "st", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
- 	{ MODKEY,                       XK_p,  spawn,          {.v = dmenucmd } },
+ 	{ MODKEY,                       XK_p,  		 spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
@@ -73,7 +70,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
 	{ MODKEY|ShiftMask,             XK_Return, zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
-	{ MODKEY,		        XK_q,      killclient,     {0} },
+	{ MODKEY,XK_q,       						killclient,     					 {0} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
 	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[2]} },
@@ -116,4 +113,3 @@ static Button buttons[] = {
 	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
 	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
 };
-
